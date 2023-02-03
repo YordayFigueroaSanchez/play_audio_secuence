@@ -1,0 +1,57 @@
+<html> 
+<head></head> 
+<body> 
+ 
+<button id="startButton">Start</button> 
+ 
+<script type="application/javascript"> 
+ 
+  function playNext() { 
+    if (audioPointer <audioArray.length) { 
+      audio = new Audio(audioArray[audioPointer]); 
+      audio.addEventListener("ended", playNext); 
+      audio.play(); 
+      console.log(`playing ${audioArray[audioPointer]}`); 
+      audioPointer += 1; 
+    } else { 
+      console.log("finished"); 
+    } 
+  } 
+
+  
+  
+  function onStart() { 
+    if (audio) { 
+      audio.pause(); 
+    } 
+    console.log("start"); 
+    audioPointer = 0; 
+    playNext(); 
+  } 
+		 
+		 
+  const startButton = document.getElementById("startButton"); 
+  startButton.addEventListener("click", onStart); 
+  
+//   29529
+//   const audioArray = [ 
+//     "sounds/29.mp3",
+//     "sounds/50.mp3",
+//     "sounds/42.mp3",
+//     "sounds/29.mp3"
+//   ]; 
+
+//   29528
+const audioArray = [ 
+    "sounds/29.mp3",
+    "sounds/50.mp3",
+    "sounds/42.mp3",
+    "sounds/28.mp3"
+  ]; 
+
+  let audioPointer; 
+  let audio; 
+ 
+</script> 
+</body> 
+</html>
